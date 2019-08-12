@@ -8,7 +8,69 @@
         let min = 0;
         let max = 3;
         let random = Math.floor(Math.random() * (+max - +min)) + +min;
-        return random;  
+        
+        
+        return random;
+        }
+
+    
+         
+    
+   
+    
+    let playerSelection = prompt("Pick your weapon: ").toLowerCase();
+    let computerSelection = computerPlay();
+    let formatSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+
+    function compareSelections (x, y) {
+        
+        switch(y) {
+            case 'Rock':
+                y = 0;
+                break;
+            case 'Paper':
+                y = 1;
+                break;
+            case 'Scissors':
+                y = 2;
+                break;
+        }
+        if (x == y) {
+        alert("It's a draw!")
+        }
+        if (x == y+1 || x == y-2) {
+            switch(x) {
+                case 0:
+                    x = 'Rock';
+                    break;
+                case 1:
+                    x = 'Paper';
+                    break;
+                case 2:
+                    x = 'Scissors';
+                    break;
+            }
+            
+            alert(`Computer wins! ${x} beats ${formatSelection}!`);
+        }
+        
+        if (y == x+1 || y ==  x-2) {
+            switch(x) {
+                case 0:
+                    x = 'Rock';
+                    break;
+                case 1:
+                    x = 'Paper';
+                    break;
+                case 2:
+                    x = 'Scissors';
+                    break;
+            }
+            alert(`Player wins! ${formatSelection} beats ${x}!`);     
+        }
     }
+
+    compareSelections(computerSelection, formatSelection);
+    
     </script>
 </body></html>
