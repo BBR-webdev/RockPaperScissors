@@ -18,59 +18,79 @@
     
    
     
-    let playerSelection = prompt("Pick your weapon: ").toLowerCase();
-    let computerSelection = computerPlay();
-    let formatSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-
-    function compareSelections (x, y) {
+    
+    let computerScore = 0;
+    let playerScore = 0;
+    while (computerScore < 5 && playerScore < 5) {
+        let playerSelection = prompt("Pick your weapon: ").toLowerCase();
+        let computerSelection = computerPlay();
+        let formatSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
         
-        switch(y) {
-            case 'Rock':
-                y = 0;
-                break;
-            case 'Paper':
-                y = 1;
-                break;
-            case 'Scissors':
-                y = 2;
-                break;
-        }
-        if (x == y) {
-        alert("It's a draw!")
-        }
-        if (x == y+1 || x == y-2) {
-            switch(x) {
-                case 0:
-                    x = 'Rock';
+        function compareSelections (x, y) {
+            
+            switch(y) {
+                case 'Rock':
+                    y = 0;
                     break;
-                case 1:
-                    x = 'Paper';
+                case 'Paper':
+                    y = 1;
                     break;
-                case 2:
-                    x = 'Scissors';
+                case 'Scissors':
+                    y = 2;
                     break;
+            }
+            if (x == y) {
+            alert("It's a draw!")
+            alert(`The score is: Computer ${computerScore} - Player ${playerScore}` );
+            
+            }
+            if (x == y+1 || x == y-2) {
+                switch(x) {
+                    case 0:
+                        x = 'Rock';
+                        break;
+                    case 1:
+                        x = 'Paper';
+                        break;
+                    case 2:
+                        x = 'Scissors';
+                        break;
+                }
+                
+                alert(`Computer wins! ${x} beats ${formatSelection}!`);
+                computerScore++;
+                
+                
+
             }
             
-            alert(`Computer wins! ${x} beats ${formatSelection}!`);
-        }
-        
-        if (y == x+1 || y ==  x-2) {
-            switch(x) {
-                case 0:
-                    x = 'Rock';
-                    break;
-                case 1:
-                    x = 'Paper';
-                    break;
-                case 2:
-                    x = 'Scissors';
-                    break;
+            if (y == x+1 || y ==  x-2) {
+                switch(x) {
+                    case 0:
+                        x = 'Rock';
+                        break;
+                    case 1:
+                        x = 'Paper';
+                        break;
+                    case 2:
+                        x = 'Scissors';
+                        break;
+                }
+                alert(`Player wins! ${formatSelection} beats ${x}!`);
+                playerScore++;
             }
-            alert(`Player wins! ${formatSelection} beats ${x}!`);     
+            alert(`The score is: Computer ${computerScore} - Player ${playerScore}` )
         }
-    }
 
-    compareSelections(computerSelection, formatSelection);
-    
+
+        compareSelections(computerSelection, formatSelection);
+        
+    }
+    if (playerScore > computerScore) {
+            alert("You won the game!");     
+        }
+        else {
+            alert("You lost the game!");
+        }
     </script>
 </body></html>
