@@ -1,15 +1,18 @@
+
+
 <!DOCTYPE html>
 <head>
 
 </head>
 <body>
     <script type="text/javascript">
+    // From https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors 
+
+    // randomizer for values between 0 - 2 to determine Computer choice
     function computerPlay() {
         let min = 0;
         let max = 3;
-        let random = Math.floor(Math.random() * (+max - +min)) + +min;
-        
-        
+        let random = Math.floor(Math.random() * (+max - +min)) + +min;   
         return random;
         }
 
@@ -18,16 +21,25 @@
     
    
     
-    
+    // initialize score values
     let computerScore = 0;
     let playerScore = 0;
+
+    // While loop exits when 5 points are reached by any party
     while (computerScore < 5 && playerScore < 5) {
-        let playerSelection = prompt("Pick your weapon: ").toLowerCase();
+
+        // prompt for user input
+        let playerSelection = prompt("Pick your weapon: ('Rock', 'Paper' or 'Scissors' ) ").toLowerCase();
+        // calling for random number from computerPlay()
         let computerSelection = computerPlay();
+
+        // format the player selection for easier comparisons. Will also format the string for later outputs.
         let formatSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
         
+        // Defining the function to compare the two inputs
         function compareSelections (x, y) {
             
+            // First, change user input to numeric values
             switch(y) {
                 case 'Rock':
                     y = 0;
@@ -39,11 +51,15 @@
                     y = 2;
                     break;
             }
+
+            // Check for draw
             if (x == y) {
             alert("It's a draw!")
             alert(`The score is: Computer ${computerScore} - Player ${playerScore}` );
             
             }
+
+            // Computer win conditions
             if (x == y+1 || x == y-2) {
                 switch(x) {
                     case 0:
@@ -64,6 +80,7 @@
 
             }
             
+            // Player win conditions
             if (y == x+1 || y ==  x-2) {
                 switch(x) {
                     case 0:
@@ -82,10 +99,11 @@
             alert(`The score is: Computer ${computerScore} - Player ${playerScore}` )
         }
 
-
+        // Calling for comparison at each iteration of the while loop
         compareSelections(computerSelection, formatSelection);
         
     }
+    // After 5 points are reached, determine the winner
     if (playerScore > computerScore) {
             alert("You won the game!");     
         }
